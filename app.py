@@ -253,7 +253,7 @@ def generate_with_luna_openai(prompt, project_name, api_key, model):
 
     response = client.chat.completions.create(
         model=model,
-        temperature=1.0,  # Temperature set to 1.0 as requested
+        temperature=1.0,  # Temperature set to 1.0
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": system_luna},
@@ -328,7 +328,7 @@ if "project_name" not in st.session_state:
 if "project_summary" not in st.session_state:
     st.session_state.project_summary = ""
 
-# Check Streamlit Secrets for OpenAI API Key (GPT-6 Luna)
+# Securely load API Key from Streamlit Secrets or Environment Variables (Hidden from UI)
 luna_secret_key = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY", ""))
 
 with st.sidebar:
@@ -337,7 +337,7 @@ with st.sidebar:
         " INTELLIGENCE FACTORY</div>",
         unsafe_allow_html=True,
     )
-    st.caption("Powered by GPT-6 Luna • Secrets Integrated")
+    st.caption("Powered by GPT-6 Luna • Secrets Secured")
     st.divider()
     page = st.radio(
         "Workspace",
@@ -364,7 +364,7 @@ with st.sidebar:
         )
 
     st.divider()
-    st.caption("Light Theme Edition • Streamlit Secrets Active")
+    st.caption("Light Theme Edition • Secrets Active")
 
 # Workspace Pages
 if page == "Build Studio":
@@ -384,7 +384,7 @@ if page == "Build Studio":
     c2.metric("Export", "ZIP Package")
     c3.metric(
         "API Status",
-        "Key Configured ⚡" if luna_secret_key else "Key Required ⚠️",
+        "Securely Loaded ⚡" if luna_secret_key else "Key Missing in Secrets ⚠️",
     )
 
     st.markdown("#### Start a new build")
@@ -408,20 +408,16 @@ if page == "Build Studio":
         model = st.text_input(
             "Model Name", value=st.session_state.get("model", DEFAULT_MODEL)
         )
-        api_key = st.text_input(
-            "OpenAI / Luna API Key",
-            type="password",
-            value=luna_secret_key,
-            help="Loaded automatically from .streamlit/secrets.toml if present.",
-        )
+        # API Key input field completely removed from UI and handled via secrets securely.
 
     if st.button("⚡ Build My Project", type="primary", use_container_width=True):
         if not prompt.strip():
             st.error("Please enter a description for your application.")
-        elif mode == "GPT-6 Luna (API Mode)" and not api_key.strip():
+        elif mode == "GPT-6 Luna (API Mode)" and not luna_secret_key.strip():
             st.error(
-                "Missing API key! Please add your key in Settings or"
-                " secrets.toml, or switch to Demo Mode."
+                "Missing API key in Streamlit secrets! Please configure"
+                " OPENAI_API_KEY in .streamlit/secrets.toml or switch to Demo"
+                " Mode."
             )
         else:
             safe_name = safe_project_name(project_name)
@@ -432,7 +428,7 @@ if page == "Build Studio":
                         summary, files = generate_with_luna_openai(
                             prompt.strip(),
                             safe_name,
-                            api_key.strip(),
+                            luna_secret_key.strip(),
                             model.strip() or DEFAULT_MODEL,
                         )
                     else:
@@ -528,11 +524,11 @@ else:
     st.title("⚙️ Settings & Secrets")
     st.markdown("### Streamlit Secrets Setup")
     st.markdown(
-        "To enable **GPT-6 Luna** automatically without entering API keys,"
-        " save this in `.streamlit/secrets.toml`:"
+        "To enable **GPT-6 Luna** automatically, configure your secure API key"
+        " in `.streamlit/secrets.toml`:"
     )
     st.code(
-        'OPENAI_API_KEY = "sk-proj-your-openai-key-here"\nOPENAI_MODEL ='
+        'OPENAI_API_KEY = "sk-proj-your-api-key-here"\nOPENAI_MODEL ='
         ' "gpt-6-luna"',
         language="toml",
     )
