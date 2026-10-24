@@ -20,37 +20,37 @@ st.set_page_config(
     page_title=APP_NAME, page_icon="⚡", layout="wide", initial_sidebar_state="expanded"
 )
 
-# Custom High-Contrast Yellow on Black CSS Theme with White Labels & Navigation
+# Custom Light Theme CSS with Amber/Gold Accents & Dark Charcoal Typography
 st.markdown(
     """
 <style>
 /* Main App Background & Text */
 .stApp {
-    background-color: #000000;
-    background: radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.08), transparent 30%),
-                radial-gradient(circle at 90% 90%, rgba(234, 179, 8, 0.05), transparent 30%), #000000;
-    color: #FFFFFF;
+    background-color: #F8FAFC;
+    background: radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.06), transparent 30%),
+                radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.04), transparent 30%), #F8FAFC;
+    color: #0F172A;
 }
 
 /* Sidebar Styling */
 [data-testid="stSidebar"] {
-    background-color: #050505;
-    border-right: 1px solid rgba(255, 215, 0, 0.25);
+    background-color: #F1F5F9;
+    border-right: 1px solid rgba(217, 119, 6, 0.2);
 }
 
-/* Force Sidebar Navigation Options & Radio Text to Bright White */
+/* Force Sidebar Navigation Options & Radio Text to Dark Charcoal */
 [data-testid="stSidebar"] div[role="radiogroup"] label {
-    color: #FFFFFF !important;
+    color: #0F172A !important;
     font-weight: 600 !important;
 }
 
 [data-testid="stSidebar"] div[role="radiogroup"] label p {
-    color: #FFFFFF !important;
+    color: #0F172A !important;
     font-weight: 600 !important;
     font-size: 1rem !important;
 }
 
-/* Force All Widget Labels, Radio Options, and Input Headers to Bright White */
+/* Force All Widget Labels, Radio Options, and Input Headers to Dark Charcoal */
 div[data-testid="stWidgetLabel"] label,
 div[data-testid="stWidgetLabel"] p,
 .stTextInput label,
@@ -59,33 +59,33 @@ div[data-testid="stWidgetLabel"] p,
 .stRadio label p,
 .stTextArea label,
 .stTextArea label p {
-    color: #FFFFFF !important;
+    color: #0F172A !important;
     font-weight: 600 !important;
 }
 
-/* Force Radio button option text items to white */
+/* Force Radio button option text items to dark charcoal */
 div.stRadio div[role="radiogroup"] label span {
-    color: #FFFFFF !important;
+    color: #0F172A !important;
 }
 
-/* Force Build Pipeline Section Header & List Items to White */
+/* Force Build Pipeline Section Header & List Items to Dark Charcoal */
 .pipeline-header {
-    color: #FFFFFF !important;
+    color: #0F172A !important;
     font-weight: 700 !important;
     font-size: 1rem !important;
     margin-bottom: 8px;
 }
 
 .pipeline-item {
-    color: #FFFFFF !important;
+    color: #334155 !important;
     font-weight: 500 !important;
     font-size: 0.9rem !important;
     margin-bottom: 4px;
 }
 
-/* Yellow Metallic Gradient Text */
+/* Amber / Gold Metallic Gradient Text */
 .if-gradient {
-    background: linear-gradient(90deg, #FFE066, #FFB700, #EAB308);
+    background: linear-gradient(90deg, #D97706, #B45309, #92400E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
@@ -93,7 +93,7 @@ div.stRadio div[role="radiogroup"] label span {
 
 /* Subtext / Muted Text */
 .if-muted {
-    color: #D4D4D8;
+    color: #475569;
     font-size: 0.95rem;
 }
 
@@ -101,45 +101,45 @@ div.stRadio div[role="radiogroup"] label span {
     font-size: 1.15rem;
     font-weight: 900;
     letter-spacing: 0.08em;
-    color: #FFD700;
+    color: #B45309;
 }
 
-/* Primary Buttons with Yellow / Amber Glow */
+/* Primary Buttons with Amber Glow */
 div.stButton>button, div.stDownloadButton>button {
-    border: 1px solid #FFD700 !important;
-    background: linear-gradient(100deg, #EAB308, #CA8A04) !important;
-    color: #000000 !important;
+    border: 1px solid #D97706 !important;
+    background: linear-gradient(100deg, #F59E0B, #D97706) !important;
+    color: #FFFFFF !important;
     border-radius: 8px !important;
     font-weight: 700 !important;
     transition: all 0.3s ease;
 }
 
 div.stButton>button:hover, div.stDownloadButton>button:hover {
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6) !important;
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.4) !important;
     transform: translateY(-1px);
 }
 
 /* Metric Cards */
 [data-testid="stMetric"] {
-    background: rgba(15, 15, 15, 0.9);
+    background: #FFFFFF;
     padding: 14px 16px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(217, 119, 6, 0.25);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 [data-testid="stMetricLabel"] {
-    color: #E4E4E7 !important;
+    color: #475569 !important;
 }
 
 [data-testid="stMetricValue"] {
-    color: #FFD700 !important;
+    color: #B45309 !important;
     font-weight: 700;
 }
 
 /* Code Blocks & Inputs */
 .stCodeBlock, stTextArea, stTextInput {
-    border: 1px solid rgba(255, 215, 0, 0.2) !important;
+    border: 1px solid rgba(217, 119, 6, 0.2) !important;
 }
 </style>
 """,
@@ -223,9 +223,9 @@ A starter Streamlit application generated by **IF — INTELLIGENCE FACTORY (GPT-
         "requirements.txt": "streamlit>=1.36.0\n",
         "README.md": readme,
         ".streamlit/config.toml": (
-            '[theme]\nbase = "dark"\nprimaryColor = "#FFD700"\nbackgroundColor ='
-            ' "#000000"\nsecondaryBackgroundColor = "#0F0F0F"\ntextColor ='
-            ' "#FFFFFF"\n'
+            '[theme]\nbase = "light"\nprimaryColor = "#D97706"\nbackgroundColor ='
+            ' "#F8FAFC"\nsecondaryBackgroundColor = "#F1F5F9"\ntextColor ='
+            ' "#0F172A"\n'
         ),
     }
 
@@ -286,9 +286,9 @@ def generate_with_luna_openai(prompt, project_name, api_key, model):
     )
     files.setdefault(
         ".streamlit/config.toml",
-        '[theme]\nbase = "dark"\nprimaryColor = "#FFD700"\nbackgroundColor ='
-        ' "#000000"\nsecondaryBackgroundColor = "#0F0F0F"\ntextColor ='
-        ' "#FFFFFF"\n',
+        '[theme]\nbase = "light"\nprimaryColor = "#D97706"\nbackgroundColor ='
+        ' "#F8FAFC"\nsecondaryBackgroundColor = "#F1F5F9"\ntextColor ='
+        ' "#0F172A"\n',
     )
 
     return (
@@ -346,7 +346,7 @@ with st.sidebar:
     )
     st.divider()
 
-    # White colored Build pipeline section
+    # Build pipeline section
     st.markdown(
         '<div class="pipeline-header">Build pipeline</div>',
         unsafe_allow_html=True,
@@ -364,7 +364,7 @@ with st.sidebar:
         )
 
     st.divider()
-    st.caption("Yellow & Black Edition • Streamlit Secrets Active")
+    st.caption("Light Theme Edition • Streamlit Secrets Active")
 
 # Workspace Pages
 if page == "Build Studio":
@@ -521,7 +521,7 @@ elif page == "How It Works":
 1. **Prompt Specification**: Describe your app in natural language.
 2. **GPT-6 Luna Processing**: The engine parses your request and builds a structured multi-file JSON code repository.
 3. **Automated Validation**: Integrated syntax checking evaluates `.py` files without executing untrusted code.
-4. **Instant Packaging**: Download a cleanly formatted ZIP file complete with Streamlit `.toml` dark/yellow theme configuration.
+4. **Instant Packaging**: Download a cleanly formatted ZIP file complete with Streamlit `.toml` light theme configuration.
 """)
 
 else:
@@ -540,6 +540,6 @@ else:
 
 st.divider()
 st.caption(
-    f"IF — INTELLIGENCE FACTORY (GPT-6 Luna AI) • Yellow & Black Edition •"
+    f"IF — INTELLIGENCE FACTORY (GPT-6 Luna AI) • Light Theme Edition •"
     f" {datetime.now().year}"
 )
