@@ -20,7 +20,7 @@ st.set_page_config(
     page_title=APP_NAME, page_icon="⚡", layout="wide", initial_sidebar_state="expanded"
 )
 
-# Custom High-Contrast Yellow on Black CSS Theme with White Sidebar Navigation Text
+# Custom High-Contrast Yellow on Black CSS Theme with White Labels & Navigation
 st.markdown(
     """
 <style>
@@ -48,6 +48,24 @@ st.markdown(
     color: #FFFFFF !important;
     font-weight: 600 !important;
     font-size: 1rem !important;
+}
+
+/* Force All Widget Labels, Radio Options, and Input Headers to Bright White */
+div[data-testid="stWidgetLabel"] label,
+div[data-testid="stWidgetLabel"] p,
+.stTextInput label,
+.stTextInput label p,
+.stRadio label,
+.stRadio label p,
+.stTextArea label,
+.stTextArea label p {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* Force Radio button option text items to white */
+div.stRadio div[role="radiogroup"] label span {
+    color: #FFFFFF !important;
 }
 
 /* Force Build Pipeline Section Header & List Items to White */
