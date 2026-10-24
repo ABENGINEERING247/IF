@@ -20,7 +20,7 @@ st.set_page_config(
     page_title=APP_NAME, page_icon="⚡", layout="wide", initial_sidebar_state="expanded"
 )
 
-# Custom High-Contrast Yellow on Black CSS Theme
+# Custom High-Contrast Yellow on Black CSS Theme with White Sidebar Navigation Text
 st.markdown(
     """
 <style>
@@ -36,6 +36,33 @@ st.markdown(
 [data-testid="stSidebar"] {
     background-color: #050505;
     border-right: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+/* Force Sidebar Navigation Options & Radio Text to Bright White */
+[data-testid="stSidebar"] div[role="radiogroup"] label {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label p {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+/* Force Build Pipeline Section Header & List Items to White */
+.pipeline-header {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    margin-bottom: 8px;
+}
+
+.pipeline-item {
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 4px;
 }
 
 /* Yellow Metallic Gradient Text */
@@ -300,15 +327,24 @@ with st.sidebar:
         label_visibility="collapsed",
     )
     st.divider()
-    st.markdown("**Build pipeline**")
-    for line in [
+
+    # White colored Build pipeline section
+    st.markdown(
+        '<div class="pipeline-header">Build pipeline</div>',
+        unsafe_allow_html=True,
+    )
+    pipeline_steps = [
         "01  Describe your idea",
         "02  Generate with GPT-6 Luna",
         "03  Review code output",
         "04  Syntax verification",
         "05  Export ZIP package",
-    ]:
-        st.caption(line)
+    ]
+    for line in pipeline_steps:
+        st.markdown(
+            f'<div class="pipeline-item">{line}</div>', unsafe_allow_html=True
+        )
+
     st.divider()
     st.caption("Yellow & Black Edition • Streamlit Secrets Active")
 
