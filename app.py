@@ -253,7 +253,7 @@ def generate_with_luna_openai(prompt, project_name, api_key, model):
 
     response = client.chat.completions.create(
         model=model,
-        temperature=0.3,
+        temperature=1.0,  # Temperature set to 1.0 as requested
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": system_luna},
