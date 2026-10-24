@@ -1,0 +1,1 @@
+Build a modern task management web app with add, complete, delete, search, and priority features. Use Streamlit and SQLite. Include setup instructions.
